@@ -7,31 +7,52 @@ Original file is located at
     https://colab.research.google.com/drive/1wVDWIDWPww8QT43mCjNlDIUCCHCj_znP
 """
 
-# Step 1: Input Picker Performance Data
+import csv
 
-print("📦 QuickCommerce Picker Daily Report")
+# Bonus calculator function
+def calculate_bonus(orders):
+    if orders > 50:
+        return 500
+    elif orders > 30:
+        return 200
+    else:
+        return 0
 
-name = input("Enter picker name: ")
-orders = int(input("Enter total orders packed today: "))
-hours_worked = float(input("Enter total hours worked: "))
-break_time = float(input("Enter total break time (in hours): "))
+# Ask how many pickers
+num = int(input("How many pickers today? "))
+pickers = []
 
-# Step 2: Effective Work Hours
-effective_hours = hours_worked - break_time
-efficiency = orders / effective_hours if effective_hours > 0 else 0
+# Collect data
+for i in range(num):
+    print(f"\n--- Picker {i+1} ---")
+    name = input("Name: ")
+    orders = int(input("Orders Packed: "))
+    hours = float(input("Hours Worked: "))
+    break_time = float(input("Break Time: "))
 
-# Step 3: Bonus Logic
-if orders > 50:
-    bonus = 500
-elif orders > 30:
-    bonus = 200
-else:
-    bonus = 0
+    eff_hours = hours - break_time
+    efficiency = orders / eff_hours if eff_hours > 0 else 0
+    bonus = calculate_bonus(orders)
 
-# Step 4: Output Report
-print("\n--- Picker Performance Report ---")
-print("Name:", name)
-print("Orders Packed:", orders)
-print("Effective Hours:", round(effective_hours, 2))
-print("Efficiency:", round(efficiency, 2), "orders/hour")
-print("Bonus Earned: ₹", bonus)
+    picker_report = {
+        "name": name,
+        "orders": orders,
+        "efficiency": round(efficiency, 2),
+        "bonus": bonus
+    }
+
+    pickers.append(picker_report)
+
+# Save to CSV
+filename = "picker_report.csv"
+with open(filename, mode='w', newline='') as file:
+    writer = csv.DictWriter(file, fieldnames=["name", "orders", "efficiency", "bonus"])
+    writer.writeheader()
+    writer.writerows(pickers)
+
+print(f"\n📁 Picker report saved to {filename} ✅")
+
+# Print summary
+print("\n===== Daily Summary =====")
+for p in pickers:
+    print(f"{p['name']} - {p['orders']} orders - {p['efficiency']} orders/hr - ₹{p['bonus']} bonus")
