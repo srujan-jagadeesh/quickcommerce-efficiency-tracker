@@ -56,3 +56,33 @@ print(f"\n📁 Picker report saved to {filename} ✅")
 print("\n===== Daily Summary =====")
 for p in pickers:
     print(f"{p['name']} - {p['orders']} orders - {p['efficiency']} orders/hr - ₹{p['bonus']} bonus")
+
+"""## 📊 Milestone 5: Visualizing Picker Performance"""
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load picker_report.csv
+df = pd.read_csv("picker_report.csv")
+
+# View the data
+print(df)
+
+# Bar chart - Orders Packed per Picker
+plt.figure(figsize=(8, 5))
+plt.bar(df["name"], df["orders"], color="skyblue")
+plt.title("Orders Packed by Pickers")
+plt.xlabel("Picker")
+plt.ylabel("Orders Packed")
+plt.grid(axis='y')
+plt.tight_layout()
+plt.savefig("orders_bar_chart.png")
+plt.show()
+
+# Pie chart - Bonus distribution
+plt.figure(figsize=(6, 6))
+plt.pie(df["bonus"], labels=df["name"], autopct='%1.1f%%', startangle=140)
+plt.title("Bonus Distribution")
+plt.tight_layout()
+plt.savefig("bonus_pie_chart.png")
+plt.show()
