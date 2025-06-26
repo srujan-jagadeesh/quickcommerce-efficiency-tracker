@@ -34,6 +34,13 @@ It:
 ### ✅ Milestone 4: Export to CSV
 - Learned how to use Python’s `csv` module.
 - Stored picker performance reports in a `.csv` file for external access.
+  
+### ✅ Milestone 5: Data Visualization
+- Used `matplotlib` and `pandas` to visualize picker performance
+- Created a bar chart to compare orders packed
+- Created a pie chart to show bonus distribution
+- Saved graphs as `.png` and embedded them in the README
+
 
 ---
 
