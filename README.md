@@ -68,3 +68,14 @@ Instead of starting from theory, I’m applying programming to solve problems I 
 I’m documenting my journey toward becoming a full-time data professional.  
 Feel free to explore the project, suggest improvements, or collaborate.
 
+---
+
+## 📊 Visualizations
+
+### 📦 Orders Packed by Pickers
+![Orders Bar Chart](orders_bar_chart.png)
+
+### 💰 Bonus Distribution
+![Bonus Pie Chart](bonus_pie_chart.png)
+
+
