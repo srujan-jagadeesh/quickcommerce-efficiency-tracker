@@ -41,6 +41,13 @@ It:
 - Created a pie chart to show bonus distribution
 - Saved graphs as `.png` and embedded them in the README
 
+  ### ✅ Milestone 6: CSV Analysis with Pandas
+- Loaded `picker_report.csv` into a DataFrame
+- Extracted stats like average efficiency, top performers, total bonus paid
+- Filtered high performers (efficiency > 5)
+- Practiced using `.describe()`, `.sort_values()`, `.mean()`, and conditional filtering
+
+
 
 ---
 
