@@ -86,3 +86,33 @@ plt.title("Bonus Distribution")
 plt.tight_layout()
 plt.savefig("bonus_pie_chart.png")
 plt.show()
+
+"""## 📊 Milestone 6 – CSV Analysis with pandas"""
+
+import pandas as pd
+
+df = pd.read_csv("picker_report.csv")
+print("Raw data:\n", df)
+
+# Quick stats
+display(df.describe())
+
+# Top performers by orders
+top_orders = df.sort_values(by="orders", ascending=False)
+print("\n🏆 Top by orders:\n", top_orders)
+
+# Top performers by efficiency
+top_eff = df.sort_values(by="efficiency", ascending=False)
+print("\n⚡ Top by efficiency:\n", top_eff)
+
+# Total bonus
+total_bonus = df["bonus"].sum()
+print("\n💰 Total bonus paid:", total_bonus)
+
+# Average efficiency
+avg_eff = df["efficiency"].mean()
+print("📈 Average efficiency:", round(avg_eff, 2), "orders/hour")
+
+# High performers (efficiency > 5)
+high_perf = df[df["efficiency"] > 5]
+print("\n🔥 High performers (eff > 5):\n", high_perf)
